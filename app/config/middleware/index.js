@@ -34,7 +34,7 @@ const userExtractor = async (req, res, next) => {
   const { token } = req;
   const decodedToken = token && jwt.verify(token, SECRET);
   if (!token || !decodedToken.id) {
-    throw Error({ name: 'JsonWebTokenError' })
+    return renderPage(req, res)('', 'Phiên đăng nhập hết hạn', '/dang-nhap');
   }
   const user = await User.findById(decodedToken.id);
   req.user = user;
@@ -42,7 +42,7 @@ const userExtractor = async (req, res, next) => {
 };
 
 module.exports = {
-  unknownEndpoint,
+  unknownEndpoint, 
   errorHandler,
   tokenExtractor,
   userExtractor,
