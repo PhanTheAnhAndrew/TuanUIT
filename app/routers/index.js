@@ -17,6 +17,10 @@ const adminRouters = {
         prefix: "/auth/playlist",
         route: require("../controller/admin/playlist.controller"),
     },
+    topic: {
+        prefix: "/auth/topic",
+        route: require("../controller/admin/topic.controller"),
+    },
 };
 
 const clientRouters = {
